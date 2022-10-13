@@ -1,0 +1,42 @@
+/* Procédure de tri rapide */
+
+fonction partition(entier[] tab, entier debut, entier fin)
+retourne un entier
+  entier indicePivot;
+  entier k <- debut;
+  entier tmp;
+  entier i;
+
+  /* la valeur pivot est le premier élément du tableau */
+  /* afin d'éviter les mauvaises répartitions pour ce tri */
+  /* on tire aléatoirement la valeur du pivot avant de commencer */
+
+  indicePivot <- entier aléatoire entre debut et fin;
+  tmp <- tab[indicePivot];
+  tab[indicePivot] <-  tab[debut];
+  tab[debut] <- tmp;
+
+  pour (i de debut+1 à fin en incrémentant de 1) faire
+    si (tab[i] < tab[debut]) alors
+      tmp <- tab[i];
+      tab[i] <- tab[k+1];
+      tab[k+1] <- tmp;
+      k <- k + 1;
+    fin si
+  fin pour
+  tmp <- tab[debut]
+  tab[debut] <- tab[k];
+  tab[k] <- tmp; retourner k; 
+fin fonction 
+
+procedure triRapideR(entier[] tab, entier debut, entier fin)
+  si (fin > debut) alors
+    entier indicePivot <-   partition(tab, debut, fin);
+    triRapideR(tab, debut, indicePivot - 1);
+    triRapideR(tab, indicePivot + 1, fin);
+  fin si
+fin procedure
+
+procedure triRapide(entier[] tab)
+  triRapideR(tab, 1, N);
+fin procedure

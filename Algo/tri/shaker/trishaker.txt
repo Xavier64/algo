@@ -1,0 +1,27 @@
+PROCEDURE tri_shaker ( TABLEAU a[1:n])
+ 
+sens ← 'avant', debut ← 1, fin ← n-1, en_cours ← 1
+ 
+REPETER
+   permut ← FAUX
+   REPETER
+       SI a[en_cours] > a[en_cours + 1] ALORS
+           echanger a[en_cours] et a[en_cours + 1]
+           permut ← VRAI
+       FIN SI  
+       SI (sens='avant') ALORS
+           en_cours ← en_cours + 1            
+       SINON
+           en_cours ← en_cours - 1
+       FIN SI
+   TANT QUE ((sens='avant') ET (en_cours<fin)) OU ((sens='arriere) ET (en_cours>debut))
+   SI (sens='avant') ALORS
+       sens ← 'arriere'
+       fin ← fin - 1
+   SINON
+       sens ← 'avant'
+       debut ← debut + 1
+   FIN SI
+TANT QUE permut = VRAI
+ 
+FIN PROCEDURE

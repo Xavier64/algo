@@ -1,0 +1,16 @@
+/* Procédure de tri par insertion */ 
+
+procedure triInsertion(entier[] tab)
+  entier i, k;
+  entier tmp;
+  entier k;
+  pour (i de 2 à N en incrémentant de 1) faire
+    tmp <- tab[i];
+    k <- i; 
+    tant que (k > 1 et tab[k - 1] > tmp) faire
+      tab[k] <- tab[k - 1];
+      k <- k - 1;
+    fin tant que
+  tab[k] <- tmp;
+  fin pour
+fin procedure
